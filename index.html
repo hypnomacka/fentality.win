@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - Discord Integration</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+          <img
+            id="avatar"
+            src=""
+            alt="Profile Avatar"
+            class="profile-avatar"
+          />
+          <div class="profile-info">
+            <h1 id="username" class="profile-username">Loading...</h1>
+            <div class="profile-badges">
+              <span id="discriminator" class="badge"></span>
+              <div class="status-badges">
+                <div id="status-indicator" class="status-dot"></div>
+                <span id="custom-status" class="custom-status"></span>
+              </div>
+            </div>
+            <p class="profile-description">
+              very bad java dev, know some python
+            </p>
+          </div>
+        </div>
+
+        <div class="tabs-container">
+          <div class="tabs">
+            <div class="tab-indicator"></div>
+            <button class="tab active" data-tab="spotify">Spotify</button>
+            <button class="tab" data-tab="links">Links</button>
+            <button class="tab" data-tab="projects">Projects</button>
+          </div>
+        </div>
+
+        <div class="tab-content">
+          <div id="spotify-tab" class="tab-panel active">
+            <div id="spotify-content" class="spotify-content">
+              <div class="no-activity">Not listening to Spotify</div>
+            </div>
+          </div>
+          
+          <div id="links-tab" class="tab-panel">
+            <div class="links-content">
+              <a href="https://github.com/hypnomacka" target="_blank" class="link-item">
+                <div class="link-info">
+                  <span class="link-name">GitHub</span>
+                  <span class="link-url">@hypnomacka</span>
+                </div>
+              </a>
+
+              <a href="https://fatality.win/members/nya.57136/" target="_blank" class="link-item">
+                <div class="link-info">
+                  <span class="link-name">Fatality</span>
+                  <span class="link-url">@nya</span>
+                </div>
+              </a>
+
+              <a href="https://discord.com/users/723070874336493588" target="_blank" class="link-item">
+                <div class="link-info">
+                  <span class="link-name">Discord</span>
+                  <span class="link-url">@723070874336493588</span>
+                </div>
+              </a>
+
+              <a href="https://t.me/hypnomacka" target="_blank" class="link-item">
+                <div class="link-info">
+                  <span class="link-name">Telegram</span>
+                  <span class="link-url">@hypnomacka</span>
+                </div>
+              </a>
+
+              <a href="https://steamcommunity.com/id/hypnomacka/" target="_blank" class="link-item">
+                <div class="link-info">
+                  <span class="link-name">Steam</span>
+                  <span class="link-url">@hypnomacka</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+          <div id="projects-tab" class="tab-panel">
+            <div class="projects-content">
+              <a href="https://nyaverlose.cc" target="_blank" class="project-item">
+                <div class="project-header">
+                  <img src="icons/nyaverlose.png" alt="Nyaverlose" class="project-logo">
+                  <div class="project-info">
+                    <h3>Nyaverlose</h3>
+                    <span class="project-link">nyaverlose.cc</span>
+                  </div>
+                </div>
+                <p>Advanced gaming enhancement platform</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

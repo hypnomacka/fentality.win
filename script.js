@@ -75,6 +75,63 @@ function initializeTabIndicator() {
   }, 50);
 }
 
+// Add this function to handle Discord badges
+function updateDiscordBadges(userData) {
+  const badgesContainer = document.getElementById('discord-badges');
+  const badges = [];
+  
+  // Map Discord badge flags to badge info
+  const badgeMap = {
+    1: { name: 'Discord Staff', icon: 'https://cdn.discordapp.com/badge-icons/5e74e9b61934fc1f67c65515d1f7e60d.png' },
+    2: { name: 'Partnered Server Owner', icon: 'https://cdn.discordapp.com/badge-icons/3f9748e53446a137a052f3454e2de41e.png' },
+    4: { name: 'HypeSquad Events', icon: 'https://cdn.discordapp.com/badge-icons/bf01d1073931f921909045f3a39fd264.png' },
+    8: { name: 'Bug Hunter Level 1', icon: 'https://cdn.discordapp.com/badge-icons/2717692c7dca7289b35297368a940dd0.png' },
+    64: { name: 'House Bravery', icon: 'https://cdn.discordapp.com/badge-icons/8a88d63823d8a71cd5e390baa45efa02.png' },
+    128: { name: 'House Brilliance', icon: 'https://cdn.discordapp.com/badge-icons/011940fd013da3f7fb926e4a1cd2e618.png' },
+    256: { name: 'House Balance', icon: 'https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png' },
+    512: { name: 'Early Supporter', icon: 'https://cdn.discordapp.com/badge-icons/7060786766c9c840eb3019e725d2b358.png' },
+    16384: { name: 'Bug Hunter Level 2', icon: 'https://cdn.discordapp.com/badge-icons/848f79194d4be5ff5f81505cbd0ce1e6.png' },
+    131072: { name: 'Verified Bot Developer', icon: 'https://cdn.discordapp.com/badge-icons/6df5892e0f35b051f8b61eace34f4967.png' },
+    4194304: { name: 'Active Developer', icon: 'https://cdn.discordapp.com/badge-icons/6bdc42827a38498929a4920da12695d9.png' },
+  };
+  
+  // Check for Nitro
+  if (userData.discord_user.premium_type) {
+    const nitroIcon = userData.discord_user.premium_type === 2 
+      ? 'https://cdn.discordapp.com/badge-icons/2ba85e8026a8614b640c2837bcdfe21b.png' // Nitro
+      : 'https://cdn.discordapp.com/badge-icons/72bed35d44b8498ce1c4c27c18e6971d.png'; // Nitro Basic
+    
+    badges.push({
+      name: userData.discord_user.premium_type === 2 ? 'Discord Nitro' : 'Discord Nitro Basic',
+      icon: nitroIcon
+    });
+  }
+  
+  // Check public flags for badges
+  if (userData.discord_user.public_flags) {
+    const flags = userData.discord_user.public_flags;
+    
+    Object.keys(badgeMap).forEach(flag => {
+      if (flags & parseInt(flag)) {
+        badges.push(badgeMap[flag]);
+      }
+    });
+  }
+  
+  // Clear existing badges
+  badgesContainer.innerHTML = '';
+  
+  // Add badges to container
+  badges.forEach(badge => {
+    const badgeImg = document.createElement('img');
+    badgeImg.src = badge.icon;
+    badgeImg.alt = badge.name;
+    badgeImg.title = badge.name;
+    badgeImg.className = 'discord-badge';
+    badgesContainer.appendChild(badgeImg);
+  });
+}
+
 // Fetch Discord data from Lanyard
 async function fetchDiscordData() {
   try {
@@ -126,6 +183,9 @@ function updateProfile(data) {
   } else {
     customStatus.style.display = 'none';
   }
+  
+  // Update Discord badges
+  updateDiscordBadges(data);
 }
 
 function updateSpotify(spotify) {

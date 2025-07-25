@@ -258,7 +258,8 @@ body::after {
   border-radius: 8px;
 }
 
-.links-content {
+.links-content,
+.cheetos-content {
   max-height: 300px;
   overflow-y: auto;
   padding-right: 8px;
@@ -271,23 +272,30 @@ body::after {
 .links-content::-webkit-scrollbar-button,
 .links-content::-webkit-scrollbar-track-piece,
 .links-content::-webkit-scrollbar-corner,
-.links-content::-webkit-resizer {
+.links-content::-webkit-resizer,
+.cheetos-content::-webkit-scrollbar-button,
+.cheetos-content::-webkit-scrollbar-track-piece,
+.cheetos-content::-webkit-scrollbar-corner,
+.cheetos-content::-webkit-resizer {
   display: none !important;
 }
 
 /* WebKit browsers styling */
-.links-content::-webkit-scrollbar {
+.links-content::-webkit-scrollbar,
+.cheetos-content::-webkit-scrollbar {
   width: 4px !important;
   background: transparent !important;
 }
 
-.links-content::-webkit-scrollbar-track {
+.links-content::-webkit-scrollbar-track,
+.cheetos-content::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.05) !important;
   border-radius: 10px !important;
   margin: 2px 0 !important;
 }
 
-.links-content::-webkit-scrollbar-thumb {
+.links-content::-webkit-scrollbar-thumb,
+.cheetos-content::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2) !important;
   border-radius: 10px !important;
   transition: background 0.2s ease !important;
@@ -295,13 +303,15 @@ body::after {
   border: none !important;
 }
 
-.links-content::-webkit-scrollbar-thumb:hover {
+.links-content::-webkit-scrollbar-thumb:hover,
+.cheetos-content::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.4) !important;
 }
 
 /* Additional Firefox specific styling for better appearance */
 @-moz-document url-prefix() {
-  .links-content {
+  .links-content,
+  .cheetos-content {
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
   }
@@ -433,10 +443,12 @@ body::after {
   
   .tab {
     flex: 1;
-    min-width: 80px;
+    min-width: 60px;
+    padding: 8px 12px;
   }
   
-  .links-content {
+  .links-content,
+  .cheetos-content {
     max-height: 250px;
   }
 }
